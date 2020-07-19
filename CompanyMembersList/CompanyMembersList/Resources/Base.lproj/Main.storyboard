@@ -21,6 +21,9 @@
                                     <segment title="Company"/>
                                     <segment title="Members"/>
                                 </segments>
+                                <connections>
+                                    <action selector="handleSegmentChanged:" destination="39T-Rl-Rn4" eventType="valueChanged" id="j5e-Vk-NQA"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jvg-F5-YeX">
                                 <rect key="frame" x="0.0" y="95" width="414" height="767"/>

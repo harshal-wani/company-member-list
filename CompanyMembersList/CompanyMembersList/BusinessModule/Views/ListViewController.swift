@@ -8,55 +8,36 @@
 
 import UIKit
 
-private enum Section: CaseIterable {
+internal enum Wrapper: Hashable {
+    case one(Company)
+    case two(Member)
+}
+
+internal enum Section: CaseIterable {
     case main
 }
-private typealias ListDataSource = UITableViewDiffableDataSource<Section, Company>
-private typealias ListSnapshot = NSDiffableDataSourceSnapshot<Section, Company>
+
+internal typealias ListDataSource = UITableViewDiffableDataSource<Section, Wrapper>
+internal typealias ListSnapshot = NSDiffableDataSourceSnapshot<Section, Wrapper>
 
 final class ListViewController: UIViewController, Storyboarded {
 
     /// Outlet
-    @IBOutlet fileprivate weak var listTableView: UITableView!
+    @IBOutlet weak var listTableView: UITableView!
 
     /// Local
-    private var dataSource: ListDataSource!
+    internal var dataSource: ListDataSource!
 
     // MARK: - View life cyle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = LocalizableStrings.listScreenTitle
         configureDataSource()
-        let comp1 = Company(name: "Abc", companyId: "", website: "", logo: "", about: "", members: nil)
-        let comp2 = Company(name: "Xyz", companyId: "", website: "", logo: "", about: "", members: nil)
-        createSnapshot([comp1, comp2])
-    }
-}
-
-// MARK: - UITableViewDelegate Delegates
-extension ListViewController: UITableViewDelegate {
-
-    // MARK: - Private
-    private func configureDataSource() {
-
-        dataSource = ListDataSource(tableView: listTableView,
-                                    cellProvider: { [weak self] (_, indexPath, company) -> UITableViewCell? in
-
-                                        guard let `self` = self else {
-                                            return UITableViewCell()
-                                        }
-                                        let cell = self.listTableView.dequeueReusableCell(withIdentifier: "Cell",
-                                                                                          for: indexPath)
-                                        cell.textLabel?.text = company.name
-                                        return cell
-        })
+        updateData(0)
     }
 
-    private func createSnapshot(_ company: [Company]) {
-
-        var snapshot = ListSnapshot()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(company)
-        dataSource.apply(snapshot, animatingDifferences: true)
-    }
+    // MARK: - Actions
+    @IBAction func handleSegmentChanged(_ sender: UISegmentedControl) {
+        updateData(sender.selectedSegmentIndex)
+  }
 }
