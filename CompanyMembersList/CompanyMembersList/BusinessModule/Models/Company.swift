@@ -10,8 +10,9 @@ import Foundation
 
 struct Company: Decodable, Hashable {
     let name: String
-//    let companyId: String?
-//    let website: String?
-//    let logo: String?
-//    let about: String?
+    let companyId: String
+    let website: String
+    let logo: String
+    let about: String
+    let members: [Member]?
 }

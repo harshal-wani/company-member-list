@@ -21,6 +21,7 @@
 		C9D2DE7324C4841100191A9B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DE6624C4841100191A9B /* Utilities.swift */; };
 		C9D2DE7524C4844700191A9B /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DE7424C4844700191A9B /* ListViewController.swift */; };
 		C9D2DE7824C4997400191A9B /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DE7724C4997400191A9B /* Company.swift */; };
+		C9D2DE7A24C49F1800191A9B /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DE7924C49F1800191A9B /* Member.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		C9D2DE6624C4841100191A9B /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C9D2DE7424C4844700191A9B /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		C9D2DE7724C4997400191A9B /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		C9D2DE7924C49F1800191A9B /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				C9D2DE7724C4997400191A9B /* Company.swift */,
+				C9D2DE7924C49F1800191A9B /* Member.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				C9D2DE6E24C4841100191A9B /* Storyboarded.swift in Sources */,
 				C9D2DE7324C4841100191A9B /* Utilities.swift in Sources */,
 				C9D2DE7224C4841100191A9B /* Constants.swift in Sources */,
+				C9D2DE7A24C49F1800191A9B /* Member.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

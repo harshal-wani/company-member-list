@@ -27,7 +27,9 @@ final class ListViewController: UIViewController, Storyboarded {
         super.viewDidLoad()
         self.title = LocalizableStrings.listScreenTitle
         configureDataSource()
-        createSnapshot([Company(name: "abc"), Company(name: "xyz")])
+        let comp1 = Company(name: "Abc", companyId: "", website: "", logo: "", about: "", members: nil)
+        let comp2 = Company(name: "Xyz", companyId: "", website: "", logo: "", about: "", members: nil)
+        createSnapshot([comp1, comp2])
     }
 }
 
