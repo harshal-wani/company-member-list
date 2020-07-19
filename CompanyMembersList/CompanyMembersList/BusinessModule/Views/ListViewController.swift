@@ -8,10 +8,53 @@
 
 import UIKit
 
-class ListViewController: UIViewController, Storyboarded {
+private enum Section: CaseIterable {
+    case main
+}
+private typealias ListDataSource = UITableViewDiffableDataSource<Section, Company>
+private typealias ListSnapshot = NSDiffableDataSourceSnapshot<Section, Company>
 
+final class ListViewController: UIViewController, Storyboarded {
+
+    /// Outlet
+    @IBOutlet fileprivate weak var listTableView: UITableView!
+
+    /// Local
+    private var dataSource: ListDataSource!
+
+    // MARK: - View life cyle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = LocalizableStrings.listScreenTitle
+        configureDataSource()
+        createSnapshot([Company(name: "abc"), Company(name: "xyz")])
+    }
+}
+
+// MARK: - UITableViewDelegate Delegates
+extension ListViewController: UITableViewDelegate {
+
+    // MARK: - Private
+    private func configureDataSource() {
+
+        dataSource = ListDataSource(tableView: listTableView,
+                                    cellProvider: { [weak self] (_, indexPath, company) -> UITableViewCell? in
+
+                                        guard let `self` = self else {
+                                            return UITableViewCell()
+                                        }
+                                        let cell = self.listTableView.dequeueReusableCell(withIdentifier: "Cell",
+                                                                                          for: indexPath)
+                                        cell.textLabel?.text = company.name
+                                        return cell
+        })
+    }
+
+    private func createSnapshot(_ company: [Company]) {
+
+        var snapshot = ListSnapshot()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(company)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
