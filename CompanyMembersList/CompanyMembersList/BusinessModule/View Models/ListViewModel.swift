@@ -11,8 +11,11 @@ import UIKit
 final class ListViewModel: NSObject {
 
     /// Local
-    private(set) var companies = [Company]()
-
+    private(set) var companies: [Company] = [Company]() {
+        didSet {
+            self.updateCompanyData?()
+        }
+    }
     private(set) var sortOption = ["name", "age"]
 
     // Closure
