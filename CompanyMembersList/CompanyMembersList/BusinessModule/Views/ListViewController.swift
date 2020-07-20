@@ -37,12 +37,20 @@ final class ListViewController: UIViewController, Storyboarded {
         configureDataSource()
         bindViewModel()
         viewModel.getCompList()
+        UIHelper.setNavigationItem(viewController: self,
+                                   position: .right,
+                                   image: nil,
+                                   title: "Sort",
+                                   action: #selector(rightButtonTapped))
     }
 
     // MARK: - Actions
     @IBAction func handleSegmentChanged(_ sender: UISegmentedControl) {
         updateListData()
-  }
+    }
+
+    @objc func rightButtonTapped() {
+    }
 
     // MARK: - Private
     private func bindViewModel() {
