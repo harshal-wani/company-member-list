@@ -60,3 +60,13 @@ extension ListViewController: UITableViewDelegate {
         }
     }
 }
+
+// MARK: - UISearchBarDelegate Delegates
+extension ListViewController: UISearchBarDelegate {
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        DispatchQueue.main.asyncDeduped(target: self, after: 0.25) { [weak self] in
+            print("Text= \(searchText)")
+        }
+    }
+}

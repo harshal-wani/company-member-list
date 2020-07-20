@@ -27,6 +27,7 @@
 		C9D2DE8624C56F4900191A9B /* compList.json in Resources */ = {isa = PBXBuildFile; fileRef = C9D2DE8524C56F4900191A9B /* compList.json */; };
 		C9D2DE9424C58DF900191A9B /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DE9324C58DF900191A9B /* UIHelper.swift */; };
 		C9D2DE9924C5CDA800191A9B /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DE9824C5CDA800191A9B /* PickerView.swift */; };
+		C9D2DE9B24C5EF8C00191A9B /* DispatchQueue+Dedupe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DE9A24C5EF8C00191A9B /* DispatchQueue+Dedupe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		C9D2DE8524C56F4900191A9B /* compList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = compList.json; sourceTree = "<group>"; };
 		C9D2DE9324C58DF900191A9B /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		C9D2DE9824C5CDA800191A9B /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		C9D2DE9A24C5EF8C00191A9B /* DispatchQueue+Dedupe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Dedupe.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +221,7 @@
 			children = (
 				C9D2DE6524C4841100191A9B /* Constants.swift */,
 				C9D2DE9324C58DF900191A9B /* UIHelper.swift */,
+				C9D2DE9A24C5EF8C00191A9B /* DispatchQueue+Dedupe.swift */,
 				C9D2DE6624C4841100191A9B /* Utilities.swift */,
 			);
 			path = Utils;
@@ -367,6 +370,7 @@
 				C9D2DE6E24C4841100191A9B /* Storyboarded.swift in Sources */,
 				C9D2DE7C24C4A0A000191A9B /* ListViewController+Extension.swift in Sources */,
 				C9D2DE7324C4841100191A9B /* Utilities.swift in Sources */,
+				C9D2DE9B24C5EF8C00191A9B /* DispatchQueue+Dedupe.swift in Sources */,
 				C9D2DE7224C4841100191A9B /* Constants.swift in Sources */,
 				C9D2DE7A24C49F1800191A9B /* Member.swift in Sources */,
 				C9D2DE9424C58DF900191A9B /* UIHelper.swift in Sources */,
