@@ -29,19 +29,22 @@ final class ListViewController: UIViewController, Storyboarded {
     /// Local
     internal var dataSource: ListDataSource!
     internal var viewModel = ListViewModel()
+    let sortPickerView = PickerView()
 
     // MARK: - View life cyle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = LocalizableStrings.listScreenTitle
-        configureDataSource()
-        bindViewModel()
-        viewModel.getCompList()
         UIHelper.setNavigationItem(viewController: self,
                                    position: .right,
                                    image: nil,
                                    title: "Sort",
                                    action: #selector(rightButtonTapped))
+
+        configureDataSource()
+        bindViewModel()
+        viewModel.getCompList()
+        configurePickerView()
     }
 
     // MARK: - Actions
@@ -50,6 +53,7 @@ final class ListViewController: UIViewController, Storyboarded {
     }
 
     @objc func rightButtonTapped() {
+        sortPickerView.showPicker()
     }
 
     // MARK: - Private
@@ -60,6 +64,12 @@ final class ListViewController: UIViewController, Storyboarded {
             DispatchQueue.main.async {
                 self?.updateListData()
             }
+        }
+    }
+    private func configurePickerView() {
+        sortPickerView.addPickerView(controller: self, pickerArray: viewModel.sortOption) { (index, str) in
+            print(index)
+            print(str)
         }
     }
 }

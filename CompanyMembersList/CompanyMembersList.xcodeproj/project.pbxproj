@@ -26,6 +26,7 @@
 		C9D2DE8224C4A69D00191A9B /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DE8124C4A69D00191A9B /* ListViewModel.swift */; };
 		C9D2DE8624C56F4900191A9B /* compList.json in Resources */ = {isa = PBXBuildFile; fileRef = C9D2DE8524C56F4900191A9B /* compList.json */; };
 		C9D2DE9424C58DF900191A9B /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DE9324C58DF900191A9B /* UIHelper.swift */; };
+		C9D2DE9924C5CDA800191A9B /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DE9824C5CDA800191A9B /* PickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		C9D2DE8124C4A69D00191A9B /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		C9D2DE8524C56F4900191A9B /* compList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = compList.json; sourceTree = "<group>"; };
 		C9D2DE9324C58DF900191A9B /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		C9D2DE9824C5CDA800191A9B /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 		C9D2DE5824C4841100191A9B /* BusinessModule */ = {
 			isa = PBXGroup;
 			children = (
+				C9D2DE9524C5940C00191A9B /* CommonClasses */,
 				C9D2DE5924C4841100191A9B /* Coordinator */,
 				C9D2DE5E24C4841100191A9B /* View Models */,
 				C9D2DE5F24C4841100191A9B /* Models */,
@@ -219,6 +222,14 @@
 				C9D2DE6624C4841100191A9B /* Utilities.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		C9D2DE9524C5940C00191A9B /* CommonClasses */ = {
+			isa = PBXGroup;
+			children = (
+				C9D2DE9824C5CDA800191A9B /* PickerView.swift */,
+			);
+			path = CommonClasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,6 +359,7 @@
 				C9D2DE6724C4841100191A9B /* UIAlertController+WG.swift in Sources */,
 				C9D2DE7024C4841100191A9B /* Coordinator.swift in Sources */,
 				C9D2DE7824C4997400191A9B /* Company.swift in Sources */,
+				C9D2DE9924C5CDA800191A9B /* PickerView.swift in Sources */,
 				C9D2DE6D24C4841100191A9B /* ApplicationCoordinator.swift in Sources */,
 				C9D2DE8224C4A69D00191A9B /* ListViewModel.swift in Sources */,
 				C9D2DE6F24C4841100191A9B /* ListCoordinator.swift in Sources */,

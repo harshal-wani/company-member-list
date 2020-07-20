@@ -13,6 +13,8 @@ final class ListViewModel: NSObject {
     /// Local
     private(set) var companies = [Company]()
 
+    private(set) var sortOption = ["name", "age"]
+
     // Closure
     var updateCompanyData: (() -> Void)?
 
