@@ -24,20 +24,34 @@ final class ListViewController: UIViewController, Storyboarded {
 
     /// Outlet
     @IBOutlet weak var listTableView: UITableView!
+    @IBOutlet weak var compMemSegmentControl: UISegmentedControl!
 
     /// Local
     internal var dataSource: ListDataSource!
+    internal var viewModel = ListViewModel()
 
     // MARK: - View life cyle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = LocalizableStrings.listScreenTitle
         configureDataSource()
-        updateData(0)
+        bindViewModel()
+        viewModel.getCompList()
     }
 
     // MARK: - Actions
     @IBAction func handleSegmentChanged(_ sender: UISegmentedControl) {
-        updateData(sender.selectedSegmentIndex)
+        updateListData()
   }
+
+    // MARK: - Private
+    private func bindViewModel() {
+
+        /// Naive binding
+        viewModel.updateCompanyData = { [weak self] () in
+            DispatchQueue.main.async {
+                self?.updateListData()
+            }
+        }
+    }
 }

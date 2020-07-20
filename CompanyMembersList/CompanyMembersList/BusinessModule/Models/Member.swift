@@ -9,11 +9,19 @@
 import Foundation
 
 struct Member: Decodable, Hashable {
-        let name: Name
-        let memberId: String
-        let age: Int
-        let email: String
-        let phone: String
+    let name: Name
+    let memberId: String
+    let age: Int
+    let email: String
+    let phone: String
+
+    enum CodingKeys: String, CodingKey {
+        case name = "name"
+        case memberId = "_id"
+        case age = "age"
+        case email = "email"
+        case phone = "phone"
+    }
 }
 
 struct Name: Decodable, Hashable {

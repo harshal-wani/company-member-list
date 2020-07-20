@@ -23,6 +23,8 @@
 		C9D2DE7824C4997400191A9B /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DE7724C4997400191A9B /* Company.swift */; };
 		C9D2DE7A24C49F1800191A9B /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DE7924C49F1800191A9B /* Member.swift */; };
 		C9D2DE7C24C4A0A000191A9B /* ListViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DE7B24C4A0A000191A9B /* ListViewController+Extension.swift */; };
+		C9D2DE8224C4A69D00191A9B /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DE8124C4A69D00191A9B /* ListViewModel.swift */; };
+		C9D2DE8624C56F4900191A9B /* compList.json in Resources */ = {isa = PBXBuildFile; fileRef = C9D2DE8524C56F4900191A9B /* compList.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		C9D2DE7724C4997400191A9B /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		C9D2DE7924C49F1800191A9B /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		C9D2DE7B24C4A0A000191A9B /* ListViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListViewController+Extension.swift"; sourceTree = "<group>"; };
+		C9D2DE8124C4A69D00191A9B /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		C9D2DE8524C56F4900191A9B /* compList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = compList.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +170,7 @@
 		C9D2DE5E24C4841100191A9B /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				C9D2DE8124C4A69D00191A9B /* ListViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 		C9D2DE6324C4841100191A9B /* StubData */ = {
 			isa = PBXGroup;
 			children = (
+				C9D2DE8524C56F4900191A9B /* compList.json */,
 			);
 			path = StubData;
 			sourceTree = "<group>";
@@ -294,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9D2DE8624C56F4900191A9B /* compList.json in Resources */,
 				C9D2DE6A24C4841100191A9B /* Main.storyboard in Resources */,
 				C9D2DE6824C4841100191A9B /* Assets.xcassets in Resources */,
 				C9D2DE6924C4841100191A9B /* LaunchScreen.storyboard in Resources */,
@@ -339,6 +346,7 @@
 				C9D2DE7024C4841100191A9B /* Coordinator.swift in Sources */,
 				C9D2DE7824C4997400191A9B /* Company.swift in Sources */,
 				C9D2DE6D24C4841100191A9B /* ApplicationCoordinator.swift in Sources */,
+				C9D2DE8224C4A69D00191A9B /* ListViewModel.swift in Sources */,
 				C9D2DE6F24C4841100191A9B /* ListCoordinator.swift in Sources */,
 				C9D2DE7524C4844700191A9B /* ListViewController.swift in Sources */,
 				C9D2DE6E24C4841100191A9B /* Storyboarded.swift in Sources */,

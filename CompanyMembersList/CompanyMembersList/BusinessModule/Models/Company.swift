@@ -14,5 +14,14 @@ struct Company: Decodable, Hashable {
     let website: String
     let logo: String
     let about: String
-    let members: [Member]?
+    let members: [Member]
+
+    enum CodingKeys: String, CodingKey {
+        case name = "company"
+        case companyId = "_id"
+        case website = "website"
+        case logo = "logo"
+        case about = "about"
+        case members = "members"
+    }
 }
