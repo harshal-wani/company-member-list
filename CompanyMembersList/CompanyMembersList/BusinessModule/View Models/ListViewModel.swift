@@ -43,7 +43,7 @@ final class ListViewModel: NSObject {
 }
 
 // MARK: - ClubData
-struct ClubData: Hashable {
+class ClubData: HashableClass {
     var companies: [CompanyCellModel] = []
     var members: [MemberCellModel] = []
 
@@ -54,7 +54,7 @@ struct ClubData: Hashable {
 }
 
 // MARK: - CompanyCellModel
-struct CompanyCellModel: Hashable {
+class CompanyCellModel: HashableClass {
     let name: String
     let logo: String
     let about: String
@@ -69,7 +69,7 @@ struct CompanyCellModel: Hashable {
 }
 
 // MARK: - MemberCellModel
-struct MemberCellModel: Hashable {
+class MemberCellModel: HashableClass {
     let name: String
     let age: Int
     let phone: String
