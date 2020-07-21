@@ -6,13 +6,19 @@
 //  Copyright © 2020 Harshal Wani. All rights reserved.
 //
 
-class ClubData: HashableClass {
+import Foundation
+
+class ClubData: HashableClass, NSCopying {
     var companies: [CompanyCellModel] = []
     var members: [MemberCellModel] = []
 
     init(companies: [CompanyCellModel], members: [MemberCellModel]) {
         self.companies = companies
         self.members = members
+    }
+
+    func copy(with zone: NSZone? = nil) -> Any {
+        return ClubData(companies: self.companies, members: self.members)
     }
 }
 

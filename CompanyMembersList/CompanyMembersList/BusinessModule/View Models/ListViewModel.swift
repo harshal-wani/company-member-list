@@ -11,7 +11,8 @@ import UIKit
 final class ListViewModel: NSObject {
 
     /// Local
-    private(set) var clubData: ClubData?
+    private var clubData: ClubData?
+    private(set) var searchedClubData: ClubData?
     private(set) var sortOption = ["name", "age"]
 
     // Closure
@@ -43,6 +44,19 @@ final class ListViewModel: NSObject {
         }
     }
 
+    func getSearchResult(_ str: String) {
+
+        searchedClubData?.companies =  (str.trimmingCharacters(in: .whitespacesAndNewlines) != "")
+            ? clubData!.companies.filter {$0.name.lowercased().contains(str.lowercased()) }
+            : clubData!.companies
+
+        searchedClubData?.members =  (str.trimmingCharacters(in: .whitespacesAndNewlines) != "")
+        ? clubData!.members.filter {$0.name.lowercased().contains(str.lowercased()) }
+        : clubData!.members
+
+        self.updateCompanyData?()
+    }
+
     // MARK: - Private
     private func processFetchedData(_ models: [Company]) {
 
@@ -52,6 +66,7 @@ final class ListViewModel: NSObject {
             .map { MemberCellModel(member: $0) }
 
         clubData = ClubData(companies: companies, members: members)
+        searchedClubData = clubData?.copy() as? ClubData
         self.updateCompanyData?()
     }
 }

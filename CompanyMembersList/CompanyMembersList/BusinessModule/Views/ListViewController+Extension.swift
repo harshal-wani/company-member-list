@@ -61,13 +61,13 @@ extension ListViewController {
 
         switch  tab {
         case 0:
-            viewModel.clubData?.companies
+            viewModel.searchedClubData?.companies
                 .forEach { snapshot.appendItems([.one($0)]) }
 
             dataSource.apply(snapshot, animatingDifferences: true)
 
         case 1:
-            viewModel.clubData?.members
+            viewModel.searchedClubData?.members
                 .forEach { snapshot.appendItems([.two($0)]) }
 
             dataSource.apply(snapshot, animatingDifferences: true)
@@ -82,7 +82,7 @@ extension ListViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         DispatchQueue.main.asyncDeduped(target: self, after: 0.25) { [weak self] in
-            print("Text= \(searchText)")
+            self?.viewModel.getSearchResult(searchText)
         }
     }
 }
