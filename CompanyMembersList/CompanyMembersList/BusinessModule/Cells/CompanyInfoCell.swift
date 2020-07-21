@@ -14,4 +14,12 @@ final class CompanyInfoCell: UITableViewCell, ReusableView, NibLoadableView {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var aboutlabel: UILabel!
     @IBOutlet weak var websiteLabel: UILabel!
+
+    var companyCellModel: CompanyCellModel? {
+        didSet {
+            self.nameLabel.text = companyCellModel?.name
+            self.aboutlabel.text = companyCellModel?.about
+            self.websiteLabel.text = companyCellModel?.website
+        }
+    }
 }

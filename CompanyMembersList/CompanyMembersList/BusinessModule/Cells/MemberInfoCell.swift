@@ -15,4 +15,14 @@ final class MemberInfoCell: UITableViewCell, ReusableView, NibLoadableView {
     @IBOutlet weak var agelabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+
+    var memberCellModel: MemberCellModel? {
+        didSet {
+            self.nameLabel.text = memberCellModel?.name
+            self.agelabel.text = memberCellModel?.age.description
+            self.phoneLabel.text = memberCellModel?.phone
+            self.emailLabel.text = memberCellModel?.email
+        }
+    }
+
 }

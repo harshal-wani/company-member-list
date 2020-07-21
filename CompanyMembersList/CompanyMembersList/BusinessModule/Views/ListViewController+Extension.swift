@@ -26,14 +26,14 @@ extension ListViewController: UITableViewDelegate {
 
                                         case .one(let company):
                                             if let cell: CompanyInfoCell = self?.listTableView.dequeueReusableCell(for: indexPath) {
-                                                cell.nameLabel.text = company.name
+                                                cell.companyCellModel = company
                                                     return cell
                                                 }
 
                                         case .two(let member):
 
                                             if let cell: MemberInfoCell = self?.listTableView.dequeueReusableCell(for: indexPath) {
-                                                cell.nameLabel.text = member.name
+                                                cell.memberCellModel = member
                                                 return cell
                                             }
                                         }
