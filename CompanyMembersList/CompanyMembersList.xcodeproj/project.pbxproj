@@ -31,6 +31,8 @@
 		C9D2DEA024C5F40F00191A9B /* CompanyInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9D2DE9E24C5F40F00191A9B /* CompanyInfoCell.xib */; };
 		C9D2DEA224C5F4C400191A9B /* GenericReusableView+WG.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DEA124C5F4C400191A9B /* GenericReusableView+WG.swift */; };
 		C9D2DEA424C5F54700191A9B /* DispatchQueue+Dedupe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DEA324C5F54700191A9B /* DispatchQueue+Dedupe.swift */; };
+		C9D2DEA724C6BF7A00191A9B /* MemberInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DEA624C6BF7A00191A9B /* MemberInfoCell.swift */; };
+		C9D2DEA924C6BFC600191A9B /* MemberInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9D2DEA824C6BFC600191A9B /* MemberInfoCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		C9D2DE9E24C5F40F00191A9B /* CompanyInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyInfoCell.xib; sourceTree = "<group>"; };
 		C9D2DEA124C5F4C400191A9B /* GenericReusableView+WG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GenericReusableView+WG.swift"; sourceTree = "<group>"; };
 		C9D2DEA324C5F54700191A9B /* DispatchQueue+Dedupe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Dedupe.swift"; sourceTree = "<group>"; };
+		C9D2DEA624C6BF7A00191A9B /* MemberInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInfoCell.swift; sourceTree = "<group>"; };
+		C9D2DEA824C6BFC600191A9B /* MemberInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemberInfoCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +251,8 @@
 			isa = PBXGroup;
 			children = (
 				C9D2DE9D24C5F40F00191A9B /* CompanyInfoCell.swift */,
+				C9D2DEA624C6BF7A00191A9B /* MemberInfoCell.swift */,
+				C9D2DEA824C6BFC600191A9B /* MemberInfoCell.xib */,
 				C9D2DE9E24C5F40F00191A9B /* CompanyInfoCell.xib */,
 			);
 			path = Cells;
@@ -339,6 +345,7 @@
 				C9D2DE6A24C4841100191A9B /* Main.storyboard in Resources */,
 				C9D2DE6824C4841100191A9B /* Assets.xcassets in Resources */,
 				C9D2DE6924C4841100191A9B /* LaunchScreen.storyboard in Resources */,
+				C9D2DEA924C6BFC600191A9B /* MemberInfoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +389,7 @@
 				C9D2DE7024C4841100191A9B /* Coordinator.swift in Sources */,
 				C9D2DE7824C4997400191A9B /* Company.swift in Sources */,
 				C9D2DE9924C5CDA800191A9B /* PickerView.swift in Sources */,
+				C9D2DEA724C6BF7A00191A9B /* MemberInfoCell.swift in Sources */,
 				C9D2DE6D24C4841100191A9B /* ApplicationCoordinator.swift in Sources */,
 				C9D2DE8224C4A69D00191A9B /* ListViewModel.swift in Sources */,
 				C9D2DE6F24C4841100191A9B /* ListCoordinator.swift in Sources */,

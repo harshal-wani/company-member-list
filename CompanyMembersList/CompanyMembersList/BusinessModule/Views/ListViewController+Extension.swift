@@ -31,10 +31,9 @@ extension ListViewController: UITableViewDelegate {
 
                                         case .two(let member):
 
-                                            let cell = self?.listTableView.dequeueReusableCell(withIdentifier: "Cell",
-                                                                                               for: indexPath)
-                                            cell?.textLabel?.text = member.name.first
-                                            return cell
+                                            if let cell: MemberInfoCell = self?.listTableView.dequeueReusableCell(for: indexPath) {
+                                                return cell
+                                            }
                                         }
                                         return UITableViewCell()
         })

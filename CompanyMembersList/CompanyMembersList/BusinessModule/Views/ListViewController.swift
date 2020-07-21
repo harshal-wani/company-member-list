@@ -42,6 +42,7 @@ final class ListViewController: UIViewController, Storyboarded {
                                    action: #selector(rightButtonTapped))
 
         listTableView.register(CompanyInfoCell.self)
+        listTableView.register(MemberInfoCell.self)
         listTableView.rowHeight = UITableView.automaticDimension
         listTableView.estimatedRowHeight = UITableView.automaticDimension
         configureDataSource()
