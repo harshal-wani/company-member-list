@@ -41,10 +41,7 @@ final class ListViewController: UIViewController, Storyboarded {
                                    title: "Sort",
                                    action: #selector(rightButtonTapped))
 
-        listTableView.register(CompanyInfoCell.self)
-        listTableView.register(MemberInfoCell.self)
-        listTableView.rowHeight = UITableView.automaticDimension
-        listTableView.estimatedRowHeight = UITableView.automaticDimension
+        configureTableView()
         configureDataSource()
         configurePickerView()
         bindViewModel()
@@ -75,5 +72,13 @@ final class ListViewController: UIViewController, Storyboarded {
             print(index)
             print(str)
         }
+    }
+
+    private func configureTableView() {
+        listTableView.register(CompanyInfoCell.self)
+        listTableView.register(MemberInfoCell.self)
+        listTableView.rowHeight = UITableView.automaticDimension
+        listTableView.estimatedRowHeight = UITableView.automaticDimension
+        listTableView.keyboardDismissMode = .onDrag
     }
 }
