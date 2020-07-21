@@ -16,7 +16,7 @@ class PickerView: NSObject {
     private var viewController = UIViewController()
     private var pickerView: UIPickerView?
 
-    private var pickerDataSource: [String]?
+    var pickerDataSource: [String]?
     private var completion : ((_ selectedIndex: Int, _ selectedData: String) -> Void)?
     private var selectedIndex: Int = 0
     let pickerHeight: CGFloat = 260.0
@@ -82,6 +82,7 @@ class PickerView: NSObject {
 
     // MARK: - Public
     func showPicker() {
+        pickerView?.reloadAllComponents()
         showHidePicker(true)
     }
     func hidePicker() {

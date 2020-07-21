@@ -50,10 +50,12 @@ final class ListViewController: UIViewController, Storyboarded {
 
     // MARK: - Actions
     @IBAction func handleSegmentChanged(_ sender: UISegmentedControl) {
+        sortPickerView.hidePicker()
         updateListData()
     }
 
     @objc func rightButtonTapped() {
+        updateSortOption()
         sortPickerView.showPicker()
     }
 
@@ -68,9 +70,12 @@ final class ListViewController: UIViewController, Storyboarded {
         }
     }
     private func configurePickerView() {
-        sortPickerView.addPickerView(controller: self, pickerArray: viewModel.sortOption) { (index, str) in
-            print(index)
-            print(str)
+
+        sortPickerView.addPickerView(controller: self,
+                                     pickerArray: viewModel.sortOption.company) { [weak self] (index, str) in
+                                            print(index)
+                                            print(str)
+                                            self?.viewModel.sortCludData()
         }
     }
 
@@ -80,5 +85,11 @@ final class ListViewController: UIViewController, Storyboarded {
         listTableView.rowHeight = UITableView.automaticDimension
         listTableView.estimatedRowHeight = UITableView.automaticDimension
         listTableView.keyboardDismissMode = .onDrag
+    }
+
+    private func updateSortOption() {
+        sortPickerView.pickerDataSource = (compMemSegmentControl.selectedSegmentIndex == 0)
+            ? viewModel.sortOption.company
+            : viewModel.sortOption.member
     }
 }

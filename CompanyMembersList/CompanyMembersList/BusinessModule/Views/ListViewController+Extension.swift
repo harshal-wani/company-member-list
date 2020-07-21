@@ -80,6 +80,10 @@ extension ListViewController {
 // MARK: - UISearchBarDelegate Delegates
 extension ListViewController: UISearchBarDelegate {
 
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        sortPickerView.hidePicker()
+    }
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         DispatchQueue.main.asyncDeduped(target: self, after: 0.25) { [weak self] in
             self?.viewModel.getSearchResult(searchText)

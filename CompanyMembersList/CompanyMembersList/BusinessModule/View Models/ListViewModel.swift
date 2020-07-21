@@ -13,7 +13,7 @@ final class ListViewModel: NSObject {
     /// Local
     private var clubData: ClubData?
     private(set) var searchedClubData: ClubData?
-    private(set) var sortOption = ["name", "age"]
+    private(set) var sortOption = SortOption()
 
     // Closure
     var updateCompanyData: (() -> Void)?
@@ -57,6 +57,12 @@ final class ListViewModel: NSObject {
         self.updateCompanyData?()
     }
 
+    func sortCludData() {
+
+        searchedClubData?.companies.sort {$0.name < $1.name}
+        self.updateCompanyData?()
+    }
+
     // MARK: - Private
     private func processFetchedData(_ models: [Company]) {
 
@@ -69,4 +75,10 @@ final class ListViewModel: NSObject {
         searchedClubData = clubData?.copy() as? ClubData
         self.updateCompanyData?()
     }
+}
+
+// MARK: - SortOption
+struct SortOption {
+    let company = ["name"]
+    let member = ["name", "age"]
 }
