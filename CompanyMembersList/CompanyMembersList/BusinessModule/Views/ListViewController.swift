@@ -9,8 +9,8 @@
 import UIKit
 
 internal enum Wrapper: Hashable {
-    case one(Company)
-    case two(Member)
+    case one(CompanyCellModel)
+    case two(MemberCellModel)
 }
 
 internal enum Section: CaseIterable {

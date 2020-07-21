@@ -26,12 +26,14 @@ extension ListViewController: UITableViewDelegate {
 
                                         case .one(let company):
                                             if let cell: CompanyInfoCell = self?.listTableView.dequeueReusableCell(for: indexPath) {
+                                                cell.nameLabel.text = company.name
                                                     return cell
                                                 }
 
                                         case .two(let member):
 
                                             if let cell: MemberInfoCell = self?.listTableView.dequeueReusableCell(for: indexPath) {
+                                                cell.nameLabel.text = member.name
                                                 return cell
                                             }
                                         }
@@ -48,15 +50,13 @@ extension ListViewController: UITableViewDelegate {
 
         switch  tab {
         case 0:
-            viewModel.companies
+            viewModel.clubData?.companies
                 .forEach { snapshot.appendItems([.one($0)]) }
 
             dataSource.apply(snapshot, animatingDifferences: true)
 
         case 1:
-            viewModel.companies
-                .compactMap {$0.members}
-                .joined()
+            viewModel.clubData?.members
                 .forEach { snapshot.appendItems([.two($0)]) }
 
             dataSource.apply(snapshot, animatingDifferences: true)
