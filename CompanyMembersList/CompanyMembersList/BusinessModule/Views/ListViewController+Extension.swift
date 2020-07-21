@@ -14,8 +14,10 @@ extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+}
 
-    // MARK: - Private
+// MARK: - UITableView Datasource
+extension ListViewController {
 
     internal func configureDataSource() {
 
@@ -27,13 +29,22 @@ extension ListViewController: UITableViewDelegate {
                                         case .one(let company):
                                             if let cell: CompanyInfoCell = self?.listTableView.dequeueReusableCell(for: indexPath) {
                                                 cell.companyCellModel = company
-                                                    return cell
+
+                                                cell.userFavFollowAction = { [unowned self] type in
+                                                    self?.viewModel.updateClubDataActionItem(wrapper, type: type)
+                                                    cell.setActionButtonImage(type)
                                                 }
+                                                return cell
+                                            }
 
                                         case .two(let member):
 
                                             if let cell: MemberInfoCell = self?.listTableView.dequeueReusableCell(for: indexPath) {
                                                 cell.memberCellModel = member
+                                                cell.userFavAction = { [unowned self] type in
+                                                    self?.viewModel.updateClubDataActionItem(wrapper, type: .favorite)
+                                                    cell.setActionButtonImage(.favorite)
+                                                }
                                                 return cell
                                             }
                                         }

@@ -23,6 +23,7 @@ class CompanyCellModel: HashableClass {
     let about: String
     let website: String
     var isFavorite: Bool = false
+    var isfollow: Bool = false
 
     init(company: Company) {
         self.name = company.name
@@ -38,6 +39,7 @@ class MemberCellModel: HashableClass {
     let age: Int
     let phone: String
     let email: String
+    var isFavorite: Bool = false
 
     init(member: Member) {
         self.name = member.name.first + " " + member.name.last

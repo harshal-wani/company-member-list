@@ -41,6 +41,9 @@
                             <constraint firstAttribute="height" constant="20" id="stW-EY-aYH"/>
                         </constraints>
                         <state key="normal" image="ic_favorite"/>
+                        <connections>
+                            <action selector="favoriteButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qqj-Te-GjR"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saV-iA-E77">
                         <rect key="frame" x="10" y="75" width="260" height="15"/>
@@ -70,6 +73,7 @@
             <connections>
                 <outlet property="agelabel" destination="q8c-VB-Tda" id="NHY-13-RiM"/>
                 <outlet property="emailLabel" destination="saV-iA-E77" id="nvr-O9-JxY"/>
+                <outlet property="favoriteButton" destination="UZd-Jc-gDH" id="EaC-9e-e59"/>
                 <outlet property="nameLabel" destination="3oa-JY-eZf" id="avg-V3-GK2"/>
                 <outlet property="phoneLabel" destination="bDo-cp-3zB" id="BcH-EK-PUY"/>
             </connections>

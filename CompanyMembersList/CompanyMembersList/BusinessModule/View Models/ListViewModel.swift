@@ -28,6 +28,21 @@ final class ListViewModel: NSObject {
         } catch { }
     }
 
+    func updateClubDataActionItem(_ wrapper: Wrapper, type: ActionType) {
+
+        switch wrapper {
+        case .one(let model):
+            switch type {
+            case .favorite:
+                model.isFavorite = !model.isFavorite
+            case .follow:
+                model.isfollow = !model.isfollow
+            }
+        case .two(let model):
+            model.isFavorite = !model.isFavorite
+        }
+    }
+
     // MARK: - Private
     private func processFetchedData(_ models: [Company]) {
 

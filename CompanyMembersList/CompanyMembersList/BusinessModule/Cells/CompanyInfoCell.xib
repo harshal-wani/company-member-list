@@ -51,6 +51,9 @@
                                     <constraint firstAttribute="height" constant="20" id="stW-EY-aYH"/>
                                 </constraints>
                                 <state key="normal" image="ic_favorite"/>
+                                <connections>
+                                    <action selector="favoriteButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="alP-VZ-nzz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJC-57-1aD">
                                 <rect key="frame" x="0.0" y="40" width="20" height="20"/>
@@ -59,6 +62,9 @@
                                     <constraint firstAttribute="width" constant="20" id="dZM-8s-pA1"/>
                                 </constraints>
                                 <state key="normal" image="ic_follow"/>
+                                <connections>
+                                    <action selector="followButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pdX-wH-yAH"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -83,6 +89,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="aboutlabel" destination="q8c-VB-Tda" id="Oy3-9S-Umc"/>
+                <outlet property="favoriteButton" destination="UZd-Jc-gDH" id="YcL-2J-AV4"/>
+                <outlet property="followButton" destination="dJC-57-1aD" id="59N-dT-ma1"/>
                 <outlet property="nameLabel" destination="3oa-JY-eZf" id="avg-V3-GK2"/>
                 <outlet property="websiteLabel" destination="bDo-cp-3zB" id="UwI-1D-UZ9"/>
             </connections>
