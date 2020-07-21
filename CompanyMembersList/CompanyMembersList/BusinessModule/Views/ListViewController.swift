@@ -41,10 +41,13 @@ final class ListViewController: UIViewController, Storyboarded {
                                    title: "Sort",
                                    action: #selector(rightButtonTapped))
 
+        listTableView.register(CompanyInfoCell.self)
+        listTableView.rowHeight = UITableView.automaticDimension
+        listTableView.estimatedRowHeight = UITableView.automaticDimension
         configureDataSource()
+        configurePickerView()
         bindViewModel()
         viewModel.getCompList()
-        configurePickerView()
     }
 
     // MARK: - Actions

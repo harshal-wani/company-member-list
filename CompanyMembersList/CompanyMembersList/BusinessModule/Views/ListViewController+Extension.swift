@@ -11,7 +11,12 @@ import UIKit
 // MARK: - UITableViewDelegate Delegates
 extension ListViewController: UITableViewDelegate {
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+
     // MARK: - Private
+
     internal func configureDataSource() {
 
         dataSource = ListDataSource(tableView: listTableView,
@@ -20,10 +25,10 @@ extension ListViewController: UITableViewDelegate {
                                         switch wrapper {
 
                                         case .one(let company):
-                                            let cell = self?.listTableView.dequeueReusableCell(withIdentifier: "Cell",
-                                                                                               for: indexPath)
-                                            cell?.textLabel?.text = company.name
-                                            return cell
+                                            if let cell: CompanyInfoCell = self?.listTableView.dequeueReusableCell(for: indexPath) {
+                                                    return cell
+                                                }
+
                                         case .two(let member):
 
                                             let cell = self?.listTableView.dequeueReusableCell(withIdentifier: "Cell",
@@ -31,6 +36,7 @@ extension ListViewController: UITableViewDelegate {
                                             cell?.textLabel?.text = member.name.first
                                             return cell
                                         }
+                                        return UITableViewCell()
         })
 
     }
