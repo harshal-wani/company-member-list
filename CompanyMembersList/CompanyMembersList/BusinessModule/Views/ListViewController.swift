@@ -72,10 +72,11 @@ final class ListViewController: UIViewController, Storyboarded {
     private func configurePickerView() {
 
         sortPickerView.addPickerView(controller: self,
-                                     pickerArray: viewModel.sortOption.company) { [weak self] (index, str) in
-                                            print(index)
-                                            print(str)
-                                            self?.viewModel.sortCludData()
+                                     pickerArray: viewModel.sortOption.company) { [weak self] (_, str) in
+                                        self?.viewModel.sortCludData(
+                                        (self?.compMemSegmentControl.selectedSegmentIndex == 0)
+                                                ? .company
+                                                : .member, sortBy: str)
         }
     }
 

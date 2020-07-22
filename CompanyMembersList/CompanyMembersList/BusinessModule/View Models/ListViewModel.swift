@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum ClubTabs {
+    case company
+    case member
+}
+
 final class ListViewModel: NSObject {
 
     /// Local
@@ -57,9 +62,18 @@ final class ListViewModel: NSObject {
         self.updateCompanyData?()
     }
 
-    func sortCludData() {
+    func sortCludData(_ tab: ClubTabs, sortBy: String) {
 
-        searchedClubData?.companies.sort {$0.name < $1.name}
+        switch tab {
+        case .company:
+            searchedClubData?.companies.sort {$0.name < $1.name}
+        case .member:
+            if sortBy == "name" {
+                searchedClubData?.members.sort {$0.name < $1.name}
+            } else if sortBy == "age" {
+                searchedClubData?.members.sort {$0.age < $1.age}
+            }
+        }
         self.updateCompanyData?()
     }
 
