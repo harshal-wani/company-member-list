@@ -11,6 +11,7 @@ target 'CompanyMembersList' do
   target 'CompanyMembersListTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'OHHTTPStubs/Swift'
   end
 
 end
