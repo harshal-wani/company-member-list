@@ -15,6 +15,7 @@ enum ClubTabs {
 
 protocol ObservableViewModelProtocol {
     func getCompanies()
+    var apiError: Observable<String?> { get set }
     var filteredClubdata: Observable<ClubData?> { get  set }
 }
 
@@ -25,6 +26,7 @@ final class ListViewModel: ObservableViewModelProtocol {
     var filteredClubdata: Observable<ClubData?> = Observable(nil)
     private(set) var sortOption = SortOption()
     private let apiService: APIServiceProtocol
+    var apiError: Observable<String?> = Observable(nil)
 
     // MARK: - Initialization
     init( apiService: APIServiceProtocol = APIService()) {
@@ -34,18 +36,26 @@ final class ListViewModel: ObservableViewModelProtocol {
     // MARK: - Public
     func getCompanies() {
 
-            self.apiService.fetch(.clubDataList()) { [weak self] (result) in
-                switch result {
-                case .success(let data):
-                    do {
-                        let response = try JSONDecoder().decode([Company].self, from: data)
-                        self?.processFetchedData(response)
-                    } catch {
+        self.apiService.fetch(.clubDataList()) { [weak self] (result) in
+            switch result {
+            case .success(let data):
+                do {
+                    let response = try JSONDecoder().decode([Company].self, from: data)
+                    guard !response.isEmpty else {
+                        self?.apiError.value = APIError.noData.rawValue
+                        return
                     }
-                case .failure(let err): print(err)
+                    self?.processFetchedData(response)
+                } catch {
+                    self?.apiError.value = APIError.decodeError.rawValue
+
                 }
+            case .failure(let error):
+                self?.apiError.value = error.rawValue
+
             }
         }
+    }
 
     func updateClubDataActionItem(_ wrapper: Wrapper, type: ActionType) {
 

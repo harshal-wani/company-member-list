@@ -68,6 +68,16 @@ final class ListViewController: UIViewController, Storyboarded {
                 self?.updateListData()
             }
         }
+
+        viewModel.apiError.bind { (erroMsg) in
+            if let err = erroMsg {
+                DispatchQueue.main.async {
+                    UIAlertController.showAlert(title: LocalizableStrings.error,
+                                                message: err,
+                                                cancelButton: LocalizableStrings.ok)
+                }
+            }
+        }
     }
     private func configurePickerView() {
 
