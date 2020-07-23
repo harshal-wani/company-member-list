@@ -25,6 +25,7 @@ final class ListViewController: UIViewController, Storyboarded {
     /// Outlet
     @IBOutlet weak var listTableView: UITableView!
     @IBOutlet weak var compMemSegmentControl: UISegmentedControl!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     /// Local
     internal var dataSource: ListDataSource!
@@ -75,6 +76,22 @@ final class ListViewController: UIViewController, Storyboarded {
                     UIAlertController.showAlert(title: LocalizableStrings.error,
                                                 message: err,
                                                 cancelButton: LocalizableStrings.ok)
+                }
+            }
+        }
+
+        viewModel.isLoading.bind { [weak self] (isLoading) in
+            DispatchQueue.main.async {
+                if isLoading {
+                    self?.activityIndicator.startAnimating()
+                    UIView.animate(withDuration: 0.2, animations: {
+                        self?.listTableView.alpha = 0.0
+                    })
+                } else {
+                    self?.activityIndicator.stopAnimating()
+                    UIView.animate(withDuration: 0.2, animations: {
+                        self?.listTableView.alpha = 1.0
+                    })
                 }
             }
         }

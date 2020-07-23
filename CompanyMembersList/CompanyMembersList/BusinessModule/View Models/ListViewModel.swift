@@ -17,6 +17,7 @@ protocol ObservableViewModelProtocol {
     func getCompanies()
     var apiError: Observable<String?> { get set }
     var filteredClubdata: Observable<ClubData?> { get  set }
+    var isLoading: Observable<Bool> { get set }
 }
 
 final class ListViewModel: ObservableViewModelProtocol {
@@ -27,6 +28,7 @@ final class ListViewModel: ObservableViewModelProtocol {
     private(set) var sortOption = SortOption()
     private let apiService: APIServiceProtocol
     var apiError: Observable<String?> = Observable(nil)
+    var isLoading: Observable<Bool> = Observable(false)
 
     // MARK: - Initialization
     init( apiService: APIServiceProtocol = APIService()) {
@@ -35,8 +37,9 @@ final class ListViewModel: ObservableViewModelProtocol {
 
     // MARK: - Public
     func getCompanies() {
-
+        isLoading.value = true
         self.apiService.fetch(.clubDataList()) { [weak self] (result) in
+            self?.isLoading.value = false
             switch result {
             case .success(let data):
                 do {
