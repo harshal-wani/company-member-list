@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 enum ActionType {
     case favorite
@@ -20,6 +21,7 @@ final class CompanyInfoCell: UITableViewCell, ReusableView, NibLoadableView {
     @IBOutlet weak var websiteLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var followButton: UIButton!
+    @IBOutlet weak var logoImage: UIImageView!
 
     /// Local
     var userFavFollowAction: ((ActionType) -> Void)?
@@ -31,6 +33,9 @@ final class CompanyInfoCell: UITableViewCell, ReusableView, NibLoadableView {
             self.websiteLabel.text = companyCellModel?.website
             self.setActionButtonImage(.favorite)
             self.setActionButtonImage(.follow)
+            if let url = companyCellModel?.logo {
+                logoImage.sd_setImage(with: URL(string: url))
+            }
         }
     }
 

@@ -25,7 +25,7 @@ class ClubData: HashableClass, NSCopying {
 // MARK: - CompanyCellModel
 class CompanyCellModel: HashableClass {
     let name: String
-    let logo: String
+    var logo: String
     let about: String
     let website: String
     var isFavorite: Bool = false
@@ -36,6 +36,7 @@ class CompanyCellModel: HashableClass {
         self.logo = company.logo
         self.about = company.about
         self.website = company.website
+        self.logo = company.logo
     }
 }
 

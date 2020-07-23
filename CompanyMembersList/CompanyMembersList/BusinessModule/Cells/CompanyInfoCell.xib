@@ -91,6 +91,7 @@
                 <outlet property="aboutlabel" destination="q8c-VB-Tda" id="Oy3-9S-Umc"/>
                 <outlet property="favoriteButton" destination="UZd-Jc-gDH" id="YcL-2J-AV4"/>
                 <outlet property="followButton" destination="dJC-57-1aD" id="59N-dT-ma1"/>
+                <outlet property="logoImage" destination="LT4-vh-hJp" id="5I0-Am-xDI"/>
                 <outlet property="nameLabel" destination="3oa-JY-eZf" id="avg-V3-GK2"/>
                 <outlet property="websiteLabel" destination="bDo-cp-3zB" id="UwI-1D-UZ9"/>
             </connections>
