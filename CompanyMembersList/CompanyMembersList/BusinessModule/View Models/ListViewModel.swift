@@ -24,20 +24,28 @@ final class ListViewModel: ObservableViewModelProtocol {
     private var clubData: ClubData?
     var filteredClubdata: Observable<ClubData?> = Observable(nil)
     private(set) var sortOption = SortOption()
+    private let apiService: APIServiceProtocol
 
-    // Closure
-    var updateCompanyData: (() -> Void)?
+    // MARK: - Initialization
+    init( apiService: APIServiceProtocol = APIService()) {
+        self.apiService = apiService
+    }
 
     // MARK: - Public
     func getCompanies() {
 
-        let url = Bundle.main.url(forResource: "compList", withExtension: "json")!
-        do {
-            let data = try Data(contentsOf: url)
-            let response = try JSONDecoder().decode([Company].self, from: data)
-            self.processFetchedData(response)
-        } catch { }
-    }
+            self.apiService.fetch(.clubDataList()) { [weak self] (result) in
+                switch result {
+                case .success(let data):
+                    do {
+                        let response = try JSONDecoder().decode([Company].self, from: data)
+                        self?.processFetchedData(response)
+                    } catch {
+                    }
+                case .failure(let err): print(err)
+                }
+            }
+        }
 
     func updateClubDataActionItem(_ wrapper: Wrapper, type: ActionType) {
 

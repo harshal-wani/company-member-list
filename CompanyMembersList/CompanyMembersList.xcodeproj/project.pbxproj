@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C9B2C46A24C98FF5004478CC /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B2C46924C98FF5004478CC /* Observable.swift */; };
+		C9B2C47024C9B896004478CC /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B2C46F24C9B896004478CC /* APIService.swift */; };
+		C9B2C47224C9B8B6004478CC /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B2C47124C9B8B6004478CC /* EndPoint.swift */; };
 		C9D2DE4324C4836700191A9B /* CompanyMembersListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DE4224C4836700191A9B /* CompanyMembersListTests.swift */; };
 		C9D2DE6724C4841100191A9B /* UIAlertController+WG.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DE4E24C4841100191A9B /* UIAlertController+WG.swift */; };
 		C9D2DE6824C4841100191A9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9D2DE5024C4841100191A9B /* Assets.xcassets */; };
@@ -50,6 +52,8 @@
 
 /* Begin PBXFileReference section */
 		C9B2C46924C98FF5004478CC /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		C9B2C46F24C9B896004478CC /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		C9B2C47124C9B8B6004478CC /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		C9D2DE2824C4836100191A9B /* CompanyMembersList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CompanyMembersList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D2DE3E24C4836700191A9B /* CompanyMembersListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CompanyMembersListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D2DE4224C4836700191A9B /* CompanyMembersListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyMembersListTests.swift; sourceTree = "<group>"; };
@@ -224,6 +228,8 @@
 			isa = PBXGroup;
 			children = (
 				C9D2DE6324C4841100191A9B /* StubData */,
+				C9B2C46F24C9B896004478CC /* APIService.swift */,
+				C9B2C47124C9B8B6004478CC /* EndPoint.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -410,6 +416,8 @@
 				C9D2DEA224C5F4C400191A9B /* GenericReusableView+WG.swift in Sources */,
 				C9D2DE7224C4841100191A9B /* Constants.swift in Sources */,
 				C9D2DEAB24C6F20A00191A9B /* HashableClass+WG.swift in Sources */,
+				C9B2C47224C9B8B6004478CC /* EndPoint.swift in Sources */,
+				C9B2C47024C9B896004478CC /* APIService.swift in Sources */,
 				C9D2DE7A24C49F1800191A9B /* Member.swift in Sources */,
 				C9D2DE9F24C5F40F00191A9B /* CompanyInfoCell.swift in Sources */,
 				C9D2DE9424C58DF900191A9B /* UIHelper.swift in Sources */,
