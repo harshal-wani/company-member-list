@@ -45,7 +45,7 @@ final class ListViewController: UIViewController, Storyboarded {
         configureDataSource()
         configurePickerView()
         bindViewModel()
-        viewModel.getCompList()
+        viewModel.getCompanies()
     }
 
     // MARK: - Actions
@@ -63,7 +63,7 @@ final class ListViewController: UIViewController, Storyboarded {
     private func bindViewModel() {
 
         /// Naive binding
-        viewModel.updateCompanyData = { [weak self] () in
+        viewModel.filteredClubdata.bind { [weak self] (_) in
             DispatchQueue.main.async {
                 self?.updateListData()
             }

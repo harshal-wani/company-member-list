@@ -13,18 +13,23 @@ enum ClubTabs {
     case member
 }
 
-final class ListViewModel: NSObject {
+protocol ObservableViewModelProtocol {
+    func getCompanies()
+    var filteredClubdata: Observable<ClubData?> { get  set }
+}
+
+final class ListViewModel: ObservableViewModelProtocol {
 
     /// Local
     private var clubData: ClubData?
-    private(set) var searchedClubData: ClubData?
+    var filteredClubdata: Observable<ClubData?> = Observable(nil)
     private(set) var sortOption = SortOption()
 
     // Closure
     var updateCompanyData: (() -> Void)?
 
     // MARK: - Public
-    func getCompList() {
+    func getCompanies() {
 
         let url = Bundle.main.url(forResource: "compList", withExtension: "json")!
         do {
@@ -51,30 +56,31 @@ final class ListViewModel: NSObject {
 
     func getSearchResult(_ str: String) {
 
-        searchedClubData?.companies =  (str.trimmingCharacters(in: .whitespacesAndNewlines) != "")
-            ? clubData!.companies.filter {$0.name.lowercased().contains(str.lowercased()) }
-            : clubData!.companies
-
-        searchedClubData?.members =  (str.trimmingCharacters(in: .whitespacesAndNewlines) != "")
-        ? clubData!.members.filter {$0.name.lowercased().contains(str.lowercased()) }
-        : clubData!.members
-
-        self.updateCompanyData?()
+        filteredClubdata.value = ClubData(
+            companies: (str.trimmingCharacters(in: .whitespacesAndNewlines) != "")
+                ? clubData!.companies.filter {$0.name.lowercased().contains(str.lowercased()) }
+                : clubData!.companies,
+            members: (str.trimmingCharacters(in: .whitespacesAndNewlines) != "")
+                ? clubData!.members.filter {$0.name.lowercased().contains(str.lowercased()) }
+                : clubData!.members)
     }
 
     func sortCludData(_ tab: ClubTabs, sortBy: String) {
 
         switch tab {
         case .company:
-            searchedClubData?.companies.sort {$0.name < $1.name}
+            filteredClubdata.value?.companies.sort {$0.name < $1.name}
+
         case .member:
             if sortBy == "name" {
-                searchedClubData?.members.sort {$0.name < $1.name}
+                filteredClubdata.value?.members.sort {$0.name < $1.name}
             } else if sortBy == "age" {
-                searchedClubData?.members.sort {$0.age < $1.age}
+                filteredClubdata.value?.members.sort {$0.age < $1.age}
             }
         }
-        self.updateCompanyData?()
+        filteredClubdata.value = ClubData(
+                       companies: filteredClubdata.value!.companies,
+                       members: filteredClubdata.value!.members)
     }
 
     // MARK: - Private
@@ -82,12 +88,12 @@ final class ListViewModel: NSObject {
 
         let companies = models.map { CompanyCellModel(company: $0) }
 
-        let members = models.compactMap { $0.members}.joined()
+        let members = models.compactMap { $0.members}
+            .joined()
             .map { MemberCellModel(member: $0) }
 
         clubData = ClubData(companies: companies, members: members)
-        searchedClubData = clubData?.copy() as? ClubData
-        self.updateCompanyData?()
+        filteredClubdata.value = self.clubData?.copy() as? ClubData
     }
 }
 

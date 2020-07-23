@@ -61,13 +61,13 @@ extension ListViewController {
 
         switch  tab {
         case 0:
-            viewModel.searchedClubData?.companies
+            viewModel.filteredClubdata.value?.companies
                 .forEach { snapshot.appendItems([.one($0)]) }
 
             dataSource.apply(snapshot, animatingDifferences: true)
 
         case 1:
-            viewModel.searchedClubData?.members
+            viewModel.filteredClubdata.value?.members
                 .forEach { snapshot.appendItems([.two($0)]) }
 
             dataSource.apply(snapshot, animatingDifferences: true)
