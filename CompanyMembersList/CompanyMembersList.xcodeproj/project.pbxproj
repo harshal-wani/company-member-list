@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C9B2C46A24C98FF5004478CC /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B2C46924C98FF5004478CC /* Observable.swift */; };
 		C9D2DE4324C4836700191A9B /* CompanyMembersListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DE4224C4836700191A9B /* CompanyMembersListTests.swift */; };
 		C9D2DE6724C4841100191A9B /* UIAlertController+WG.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DE4E24C4841100191A9B /* UIAlertController+WG.swift */; };
 		C9D2DE6824C4841100191A9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9D2DE5024C4841100191A9B /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C9B2C46924C98FF5004478CC /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		C9D2DE2824C4836100191A9B /* CompanyMembersList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CompanyMembersList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D2DE3E24C4836700191A9B /* CompanyMembersListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CompanyMembersListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D2DE4224C4836700191A9B /* CompanyMembersListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyMembersListTests.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				C9D2DE9824C5CDA800191A9B /* PickerView.swift */,
+				C9B2C46924C98FF5004478CC /* Observable.swift */,
 			);
 			path = CommonClasses;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9B2C46A24C98FF5004478CC /* Observable.swift in Sources */,
 				C9D2DEA424C5F54700191A9B /* DispatchQueue+Dedupe.swift in Sources */,
 				C9D2DE6C24C4841100191A9B /* AppDelegate.swift in Sources */,
 				C9D2DE6724C4841100191A9B /* UIAlertController+WG.swift in Sources */,
