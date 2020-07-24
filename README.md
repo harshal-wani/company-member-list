@@ -1,5 +1,5 @@
 # Company and member list
-• This Swift project contains simple list of both companies and its members rendered individually.
+• Swift project shows company and members list in UITableview.
 
 ### Features
 1. Display list according to selected tab
@@ -13,9 +13,7 @@
 5. Mark member as favorite
 
 ### Architecture
-MVVM-C architecture for this project and adding closures to perform binding between View and ViewModel (MVVM).
-
-C- Coordinator for managing app navigation flow.
+Model-View-ViewModel(MVVM) architecture, plus the Coordinator pattern
 
 ### Language 
 Swift 5
