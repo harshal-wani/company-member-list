@@ -75,4 +75,14 @@ class ModelTest: XCTestCase {
         
         XCTAssertEqual(companyCellModel.name, name)
     }
+    
+    func test_ClubDataModel() {
+        
+        let clubdata = ClubData(companies: [], members: [])
+        XCTAssertTrue(clubdata.companies.isEmpty)
+        
+        let copyData = clubdata.copy()
+        XCTAssertNotNil(copyData)
+    }
 }
+
