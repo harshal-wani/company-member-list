@@ -11,7 +11,6 @@ import XCTest
 
 class CompanyMembersListTests: XCTestCase {
 
-    
     func test_IsInternetAvailable() {
         if Utilities.isInternetAvailable() {
             XCTAssertTrue(Utilities.isInternetAvailable())
