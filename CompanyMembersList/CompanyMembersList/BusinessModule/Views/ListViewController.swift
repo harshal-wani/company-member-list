@@ -105,8 +105,13 @@ final class ListViewController: UIViewController, Storyboarded {
 
         sortPickerView.addPickerView(controller: self,
                                      pickerArray: viewModel.sortOption.company) { [weak self] (_, str) in
+
+                                        guard let tab = ClubTabs.init(
+                                            rawValue: ((self?.compMemSegControl.selectedSegmentIndex)!))
+                                            else { return }
+
                                         self?.viewModel.sortCludData(
-                                        (self?.compMemSegControl.selectedSegmentIndex == 0)
+                                            (tab == ClubTabs.company)
                                                 ? .company
                                                 : .member, sortBy: str)
         }
