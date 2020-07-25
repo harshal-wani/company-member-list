@@ -55,19 +55,19 @@ extension ListViewController {
 
     internal func updateListData() {
 
-        let tab = compMemSegmentControl.selectedSegmentIndex
+        let tab = ClubTabs.init(rawValue: compMemSegControl.selectedSegmentIndex)
         var snapshot = ListSnapshot()
         snapshot.appendSections([.main])
 
         switch  tab {
-        case 0:
-            viewModel.filteredClubdata.value?.companies
+        case .company:
+            viewModel.filteredClubData?.companies
                 .forEach { snapshot.appendItems([.one($0)]) }
 
             dataSource.apply(snapshot, animatingDifferences: true)
 
-        case 1:
-            viewModel.filteredClubdata.value?.members
+        case .member:
+            viewModel.filteredClubData?.members
                 .forEach { snapshot.appendItems([.two($0)]) }
 
             dataSource.apply(snapshot, animatingDifferences: true)

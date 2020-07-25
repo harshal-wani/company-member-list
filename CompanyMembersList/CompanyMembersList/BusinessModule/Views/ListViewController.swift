@@ -24,7 +24,13 @@ final class ListViewController: UIViewController, Storyboarded {
 
     /// Outlet
     @IBOutlet weak var listTableView: UITableView!
-    @IBOutlet weak var compMemSegmentControl: UISegmentedControl!
+    @IBOutlet weak var compMemSegControl: UISegmentedControl! {
+        didSet {
+            ClubTabs.allCases.forEach {
+                compMemSegControl.setTitle($0.description, forSegmentAt: $0.rawValue)
+            }
+        }
+    }
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     /// Local
@@ -52,7 +58,7 @@ final class ListViewController: UIViewController, Storyboarded {
     // MARK: - Actions
     @IBAction func handleSegmentChanged(_ sender: UISegmentedControl) {
         sortPickerView.hidePicker()
-        updateListData()
+        viewModel.loadSegmentWiseData()
     }
 
     @objc func rightButtonTapped() {
@@ -64,34 +70,33 @@ final class ListViewController: UIViewController, Storyboarded {
     private func bindViewModel() {
 
         /// Naive binding
-        viewModel.filteredClubdata.bind { [weak self] (_) in
-            DispatchQueue.main.async {
-                self?.updateListData()
-            }
-        }
+        viewModel.listViewState.bind { [weak self]  (state) in
 
-        viewModel.apiError.bind { (erroMsg) in
-            if let err = erroMsg {
+            switch state {
+            case .idle: break
+            case .loading:
                 DispatchQueue.main.async {
-                    UIAlertController.showAlert(title: LocalizableStrings.error,
-                                                message: err,
-                                                cancelButton: LocalizableStrings.ok)
-                }
-            }
-        }
-
-        viewModel.isLoading.bind { [weak self] (isLoading) in
-            DispatchQueue.main.async {
-                if isLoading {
                     self?.activityIndicator.startAnimating()
                     UIView.animate(withDuration: 0.2, animations: {
                         self?.listTableView.alpha = 0.0
                     })
-                } else {
+                }
+            case .finished:
+                DispatchQueue.main.async {
                     self?.activityIndicator.stopAnimating()
                     UIView.animate(withDuration: 0.2, animations: {
                         self?.listTableView.alpha = 1.0
                     })
+                }
+            case .clubDataUpdates:
+                DispatchQueue.main.async {
+                    self?.updateListData()
+                }
+            case .error(let err):
+                DispatchQueue.main.async {
+                    UIAlertController.showAlert(title: LocalizableStrings.error,
+                                                message: err.rawValue,
+                                                cancelButton: LocalizableStrings.ok)
                 }
             }
         }
@@ -101,7 +106,7 @@ final class ListViewController: UIViewController, Storyboarded {
         sortPickerView.addPickerView(controller: self,
                                      pickerArray: viewModel.sortOption.company) { [weak self] (_, str) in
                                         self?.viewModel.sortCludData(
-                                        (self?.compMemSegmentControl.selectedSegmentIndex == 0)
+                                        (self?.compMemSegControl.selectedSegmentIndex == 0)
                                                 ? .company
                                                 : .member, sortBy: str)
         }
@@ -116,7 +121,7 @@ final class ListViewController: UIViewController, Storyboarded {
     }
 
     private func updateSortOption() {
-        sortPickerView.pickerDataSource = (compMemSegmentControl.selectedSegmentIndex == 0)
+        sortPickerView.pickerDataSource = (compMemSegControl.selectedSegmentIndex == 0)
             ? viewModel.sortOption.company
             : viewModel.sortOption.member
     }

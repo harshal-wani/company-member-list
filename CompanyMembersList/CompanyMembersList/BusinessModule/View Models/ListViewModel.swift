@@ -8,27 +8,38 @@
 
 import UIKit
 
-enum ClubTabs {
-    case company
-    case member
+enum ClubTabs: Int, CaseIterable {
+    case company = 0, member = 1
+
+    var description: String {
+        switch self {
+        case .company:      return "Company"
+        case .member:  return "Member"
+        }
+    }
 }
 
+enum ListViewState {
+    case idle
+    case loading
+    case finished
+    case clubDataUpdates
+    case error(APIError)
+}
 protocol ObservableViewModelProtocol {
     func getCompanies()
-    var apiError: Observable<String?> { get set }
-    var filteredClubdata: Observable<ClubData?> { get  set }
-    var isLoading: Observable<Bool> { get set }
+    var listViewState: Observable<ListViewState> { get set }
 }
 
 final class ListViewModel: ObservableViewModelProtocol {
 
     /// Local
     private var clubData: ClubData?
-    var filteredClubdata: Observable<ClubData?> = Observable(nil)
+    private(set)var filteredClubData: ClubData?
     private(set) var sortOption = SortOption()
     private let apiService: APIServiceProtocol
-    var apiError: Observable<String?> = Observable(nil)
-    var isLoading: Observable<Bool> = Observable(false)
+
+    var listViewState: Observable<ListViewState> = Observable(.idle)
 
     // MARK: - Initialization
     init( apiService: APIServiceProtocol = APIService()) {
@@ -37,25 +48,23 @@ final class ListViewModel: ObservableViewModelProtocol {
 
     // MARK: - Public
     func getCompanies() {
-        isLoading.value = true
+        listViewState.value = .loading
         self.apiService.fetch(.clubDataList()) { [weak self] (result) in
-            self?.isLoading.value = false
+            self?.listViewState.value = .finished
             switch result {
             case .success(let data):
                 do {
                     let response = try JSONDecoder().decode([Company].self, from: data)
                     guard !response.isEmpty else {
-                        self?.apiError.value = APIError.noData.rawValue
+                        self?.listViewState.value = .error(.noData)
                         return
                     }
                     self?.processFetchedData(response)
                 } catch {
-                    self?.apiError.value = APIError.decodeError.rawValue
-
+                    self?.listViewState.value = .error(.decodeError)
                 }
             case .failure(let error):
-                self?.apiError.value = error.rawValue
-
+                self?.listViewState.value = .error(error)
             }
         }
     }
@@ -77,31 +86,34 @@ final class ListViewModel: ObservableViewModelProtocol {
 
     func getSearchResult(_ str: String) {
 
-        filteredClubdata.value = ClubData(
-            companies: (str.trimmingCharacters(in: .whitespacesAndNewlines) != "")
-                ? clubData!.companies.filter {$0.name.lowercased().contains(str.lowercased()) }
-                : clubData!.companies,
-            members: (str.trimmingCharacters(in: .whitespacesAndNewlines) != "")
-                ? clubData!.members.filter {$0.name.lowercased().contains(str.lowercased()) }
-                : clubData!.members)
+        filteredClubData = ClubData(
+        companies: (str.trimmingCharacters(in: .whitespacesAndNewlines) != "")
+            ? clubData!.companies.filter {$0.name.lowercased().contains(str.lowercased()) }
+            : clubData!.companies,
+        members: (str.trimmingCharacters(in: .whitespacesAndNewlines) != "")
+            ? clubData!.members.filter {$0.name.lowercased().contains(str.lowercased()) }
+            : clubData!.members)
+
+        self.listViewState.value = .clubDataUpdates
     }
 
     func sortCludData(_ tab: ClubTabs, sortBy: String) {
 
         switch tab {
         case .company:
-            filteredClubdata.value?.companies.sort {$0.name < $1.name}
-
+            filteredClubData?.companies.sort {$0.name < $1.name}
         case .member:
             if sortBy == "name" {
-                filteredClubdata.value?.members.sort {$0.name < $1.name}
+                filteredClubData?.members.sort {$0.name < $1.name}
             } else if sortBy == "age" {
-                filteredClubdata.value?.members.sort {$0.age < $1.age}
+                filteredClubData?.members.sort {$0.age < $1.age}
             }
         }
-        filteredClubdata.value = ClubData(
-                       companies: filteredClubdata.value!.companies,
-                       members: filteredClubdata.value!.members)
+        self.listViewState.value = .clubDataUpdates
+    }
+
+    func loadSegmentWiseData() {
+        self.listViewState.value = .clubDataUpdates
     }
 
     // MARK: - Private
@@ -114,7 +126,8 @@ final class ListViewModel: ObservableViewModelProtocol {
             .map { MemberCellModel(member: $0) }
 
         clubData = ClubData(companies: companies, members: members)
-        filteredClubdata.value = self.clubData?.copy() as? ClubData
+        filteredClubData = self.clubData?.copy() as? ClubData
+        self.listViewState.value = .clubDataUpdates
     }
 }
 
