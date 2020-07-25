@@ -113,7 +113,7 @@ class APIServiceTest: XCTestCase {
         viewModel.getCompanies()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             expect.fulfill()
-            XCTAssertEqual(viewModel.filteredClubdata.value?.companies.count, response.count)
+            XCTAssertEqual(viewModel.filteredClubData?.companies.count, response.count)
 
         }
         wait(for: [expect], timeout: 10.0)
