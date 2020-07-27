@@ -22,7 +22,7 @@ class PickerView: NSObject {
     let pickerHeight: CGFloat = 260.0
     let screenSize = UIScreen.main.bounds
 
-    internal lazy var pickerUIView: UIView = {
+    lazy var pickerUIView: UIView = {
         let picker = UIView(frame: CGRect(x: 0, y: screenSize.height - pickerHeight,
                                           width: screenSize.width, height: pickerHeight))
         return picker

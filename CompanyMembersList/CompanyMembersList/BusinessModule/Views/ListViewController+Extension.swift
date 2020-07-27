@@ -19,7 +19,7 @@ extension ListViewController: UITableViewDelegate {
 // MARK: - UITableView Datasource
 extension ListViewController {
 
-    internal func configureDataSource() {
+    func configureDataSource() {
 
         dataSource = ListDataSource(tableView: listTableView,
                                     cellProvider: { [weak self] (_, indexPath, wrapper) -> UITableViewCell? in
@@ -53,7 +53,7 @@ extension ListViewController {
 
     }
 
-    internal func updateListData() {
+    func updateListData() {
 
         let tab = ClubTabs.init(rawValue: compMemSegControl.selectedSegmentIndex)
         var snapshot = ListSnapshot()

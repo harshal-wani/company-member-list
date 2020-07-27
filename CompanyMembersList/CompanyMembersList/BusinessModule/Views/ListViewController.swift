@@ -8,17 +8,17 @@
 
 import UIKit
 
-internal enum Wrapper: Hashable {
+enum Wrapper: Hashable {
     case one(CompanyCellModel)
     case two(MemberCellModel)
 }
 
-internal enum Section: CaseIterable {
+enum Section: CaseIterable {
     case main
 }
 
-internal typealias ListDataSource = UITableViewDiffableDataSource<Section, Wrapper>
-internal typealias ListSnapshot = NSDiffableDataSourceSnapshot<Section, Wrapper>
+typealias ListDataSource = UITableViewDiffableDataSource<Section, Wrapper>
+typealias ListSnapshot = NSDiffableDataSourceSnapshot<Section, Wrapper>
 
 final class ListViewController: UIViewController, Storyboarded {
 
@@ -34,8 +34,8 @@ final class ListViewController: UIViewController, Storyboarded {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     /// Local
-    internal var dataSource: ListDataSource!
-    internal var viewModel = ListViewModel()
+    var dataSource: ListDataSource!
+    var viewModel = ListViewModel()
     let sortPickerView = PickerView()
 
     // MARK: - View life cyle
