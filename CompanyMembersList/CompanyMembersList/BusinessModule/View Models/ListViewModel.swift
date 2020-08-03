@@ -13,8 +13,8 @@ enum ClubTabs: Int, CaseIterable {
 
     var description: String {
         switch self {
-        case .company:      return "Company"
-        case .member:  return "Member"
+        case .company: return "Company"
+        case .member: return "Member"
         }
     }
 }
@@ -85,15 +85,16 @@ final class ListViewModel: ObservableViewModelProtocol {
     }
 
     func getSearchResult(_ str: String) {
-
+        let text = str.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        
         filteredClubData = ClubData(
-        companies: (str.trimmingCharacters(in: .whitespacesAndNewlines) != "")
-            ? clubData!.companies.filter {$0.name.lowercased().contains(str.lowercased()) }
-            : clubData!.companies,
-        members: (str.trimmingCharacters(in: .whitespacesAndNewlines) != "")
-            ? clubData!.members.filter {$0.name.lowercased().contains(str.lowercased()) }
-            : clubData!.members)
-
+            companies: (text != "")
+                ? clubData!.companies.filter {$0.name.lowercased().contains(text) }
+                : clubData!.companies,
+            members: (text != "")
+                ? clubData!.members.filter {$0.name.lowercased().contains(text) }
+                : clubData!.members)
+        
         self.listViewState.value = .clubDataUpdates
     }
 
