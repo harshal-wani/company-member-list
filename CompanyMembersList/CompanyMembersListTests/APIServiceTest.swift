@@ -41,7 +41,7 @@ class APIServiceTest: XCTestCase {
         var errorResponse: APIError?
 
         // 2.When
-        aPIService.fetch(.clubDataList()) { (result) in
+        aPIService.fetch(.clubDataList(), [Company].self) { (result) in
             switch result {
             case .success:
                 XCTFail("Should be failed!")
@@ -73,16 +73,11 @@ class APIServiceTest: XCTestCase {
         // When
         let expect = XCTestExpectation(description: "API call and runs the callback closure")
 
-        aPIService.fetch(.clubDataList()) { (result) in
+        aPIService.fetch(.clubDataList(), [Company].self) { (result) in
             expect.fulfill()
             switch result {
-            case .success(let data):
-                do {
-                    let response = try JSONDecoder().decode([Company].self, from: data)
-                    XCTAssertTrue(!response.isEmpty)
-                } catch {
-                    XCTFail("Decode error")
-                }
+            case .success(let company):
+                XCTAssertTrue(!company.isEmpty)
             case .failure(let err):
                 XCTFail("error occured: \(err))")
             }
