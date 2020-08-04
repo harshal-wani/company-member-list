@@ -35,21 +35,23 @@ enum APIError: String, Error {
 
 protocol APIServiceProtocol {
 
-    func fetch(_ endPoint: EndPoint, completion: @escaping (Result<Data, APIError>) -> Void)
+    func fetch<T: Decodable>(_ endPoint: EndPoint, _ type: T.Type, completion: @escaping (Result<T, APIError>) -> Void)
 }
 
 final class APIService: APIServiceProtocol {
 
-    func fetch(_ endPoint: EndPoint, completion: @escaping (Result<Data, APIError>) -> Void) {
+    func fetch<T: Decodable>(_ endPoint: EndPoint, _ type: T.Type, completion: @escaping (Result<T, APIError>) -> Void) {
 
         guard let url = endPoint.url else {
-            return completion(.failure(APIError.invalidURL))
+            return completion(.failure(.invalidURL))
         }
+
         /// Check is internet available
         if !Utilities.isInternetAvailable() {
-            completion(.failure(APIError.noNetwork))
+            completion(.failure(.noNetwork))
             return
         }
+
         /// Set URLRequest and type
         var request = URLRequest(url: url)
         request.httpMethod = endPoint.method.rawValue
@@ -66,10 +68,15 @@ final class APIService: APIServiceProtocol {
                 return
             }
             guard data != nil else {
-                completion(.failure(APIError.noData))
+                completion(.failure(.noData))
                 return
             }
-            completion(.success(data!))
+            /// Decode data
+            guard let decodedData = try? JSONDecoder().decode(T.self, from: data!) else {
+                completion(.failure(.decodeError))
+                return
+            }
+            completion(.success(decodedData))
         }
         task.resume()
     }

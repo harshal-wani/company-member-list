@@ -48,21 +48,20 @@ final class ListViewModel: ObservableViewModelProtocol {
 
     // MARK: - Public
     func getCompanies() {
+
         listViewState.value = .loading
-        self.apiService.fetch(.clubDataList()) { [weak self] (result) in
+
+        self.apiService.fetch(.clubDataList(), [Company].self) { [weak self] (result) in
             self?.listViewState.value = .finished
+
             switch result {
-            case .success(let data):
-                do {
-                    let response = try JSONDecoder().decode([Company].self, from: data)
-                    guard !response.isEmpty else {
-                        self?.listViewState.value = .error(.noData)
-                        return
-                    }
-                    self?.processFetchedData(response)
-                } catch {
-                    self?.listViewState.value = .error(.decodeError)
+            case .success(let company):
+                guard !company.isEmpty else {
+                    self?.listViewState.value = .error(.noData)
+                    return
                 }
+                self?.processFetchedData(company)
+
             case .failure(let error):
                 self?.listViewState.value = .error(error)
             }
@@ -86,7 +85,7 @@ final class ListViewModel: ObservableViewModelProtocol {
 
     func getSearchResult(_ str: String) {
         let text = str.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
-        
+
         filteredClubData = ClubData(
             companies: (text != "")
                 ? clubData!.companies.filter {$0.name.lowercased().contains(text) }
@@ -94,7 +93,7 @@ final class ListViewModel: ObservableViewModelProtocol {
             members: (text != "")
                 ? clubData!.members.filter {$0.name.lowercased().contains(text) }
                 : clubData!.members)
-        
+
         self.listViewState.value = .clubDataUpdates
     }
 
