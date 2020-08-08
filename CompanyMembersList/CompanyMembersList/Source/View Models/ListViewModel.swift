@@ -52,7 +52,6 @@ final class ListViewModel: ObservableViewModelProtocol {
         listViewState.value = .loading
 
         apiService.fetch(.clubDataList(), [Company].self) { [weak self] (result) in
-            self?.listViewState.value = .finished
 
             switch result {
             case .success(let company):
@@ -60,6 +59,7 @@ final class ListViewModel: ObservableViewModelProtocol {
                     self?.listViewState.value = .error(.noData)
                     return
                 }
+                self?.listViewState.value = .finished
                 self?.processFetchedData(company)
 
             case .failure(let error):

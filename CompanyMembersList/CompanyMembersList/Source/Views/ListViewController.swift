@@ -94,6 +94,7 @@ final class ListViewController: UIViewController, Storyboarded {
                 }
             case .error(let err):
                 DispatchQueue.main.async {
+                    self?.activityIndicator.stopAnimating()
                     UIAlertController.showAlert(title: LocalizableStrings.error,
                                                 message: err.rawValue,
                                                 cancelButton: LocalizableStrings.ok)

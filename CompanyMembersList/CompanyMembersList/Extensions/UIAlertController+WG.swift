@@ -49,18 +49,14 @@ extension UIAlertController {
     func present(animated: Bool,
                  completion: (() -> Void)?) {
 
-        let keyWindow = UIApplication.shared.connectedScenes
-            .filter({$0.activationState == .foregroundActive})
-            .map({$0 as? UIWindowScene})
-            .compactMap({$0})
-            .first?.windows
-            .filter({$0.isKeyWindow}).first
+        if let app = UIApplication.shared.delegate as? AppDelegate, let keyWindow = app.window {
 
-        if var topController = keyWindow?.rootViewController {
-            while let presentedViewController = topController.presentedViewController {
-                topController = presentedViewController
+            if var topController = keyWindow.rootViewController {
+                while let presentedViewController = topController.presentedViewController {
+                    topController = presentedViewController
+                }
+                topController.present(self, animated: true, completion: nil)
             }
-            topController.present(self, animated: true, completion: nil)
         }
     }
 
