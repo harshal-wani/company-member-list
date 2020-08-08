@@ -162,7 +162,7 @@
 		C9D2DE2A24C4836100191A9B /* CompanyMembersList */ = {
 			isa = PBXGroup;
 			children = (
-				C9D2DE5824C4841100191A9B /* BusinessModule */,
+				C9D2DE5824C4841100191A9B /* Source */,
 				C9D2DE4D24C4841100191A9B /* Extensions */,
 				C9D2DE5624C4841100191A9B /* Main */,
 				C9D2DE4F24C4841100191A9B /* Resources */,
@@ -195,6 +195,7 @@
 		C9D2DE4F24C4841100191A9B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C9D2DE6324C4841100191A9B /* StubData */,
 				C9D2DE5024C4841100191A9B /* Assets.xcassets */,
 				C9D2DE5124C4841100191A9B /* LaunchScreen.storyboard */,
 				C9D2DE5324C4841100191A9B /* Main.storyboard */,
@@ -210,18 +211,16 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		C9D2DE5824C4841100191A9B /* BusinessModule */ = {
+		C9D2DE5824C4841100191A9B /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				C9D2DE9C24C5F3C600191A9B /* Cells */,
-				C9D2DE9524C5940C00191A9B /* CommonClasses */,
 				C9D2DE5924C4841100191A9B /* Coordinator */,
 				C9D2DE5E24C4841100191A9B /* View Models */,
 				C9D2DE5F24C4841100191A9B /* Models */,
 				C9D2DE6024C4841100191A9B /* Views */,
 				C9D2DE6224C4841100191A9B /* Services */,
 			);
-			path = BusinessModule;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		C9D2DE5924C4841100191A9B /* Coordinator */ = {
@@ -256,6 +255,7 @@
 		C9D2DE6024C4841100191A9B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C9D2DE9C24C5F3C600191A9B /* Cells */,
 				C9D2DE7424C4844700191A9B /* ListViewController.swift */,
 				C9D2DE7B24C4A0A000191A9B /* ListViewController+Extension.swift */,
 			);
@@ -265,7 +265,6 @@
 		C9D2DE6224C4841100191A9B /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				C9D2DE6324C4841100191A9B /* StubData */,
 				C9B2C46F24C9B896004478CC /* APIService.swift */,
 				C9B2C47124C9B8B6004478CC /* EndPoint.swift */,
 			);
@@ -283,8 +282,8 @@
 		C9D2DE6424C4841100191A9B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C9D2DE9524C5940C00191A9B /* CommonClasses */,
 				C9D2DE6524C4841100191A9B /* Constants.swift */,
-				C9D2DEA324C5F54700191A9B /* DispatchQueue+Dedupe.swift */,
 				C9D2DE9324C58DF900191A9B /* UIHelper.swift */,
 				C9D2DE6624C4841100191A9B /* Utilities.swift */,
 			);
@@ -296,6 +295,7 @@
 			children = (
 				C9D2DE9824C5CDA800191A9B /* PickerView.swift */,
 				C9B2C46924C98FF5004478CC /* Observable.swift */,
+				C9D2DEA324C5F54700191A9B /* DispatchQueue+Dedupe.swift */,
 			);
 			path = CommonClasses;
 			sourceTree = "<group>";

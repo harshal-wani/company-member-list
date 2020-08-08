@@ -51,7 +51,7 @@ final class ListViewModel: ObservableViewModelProtocol {
 
         listViewState.value = .loading
 
-        self.apiService.fetch(.clubDataList(), [Company].self) { [weak self] (result) in
+        apiService.fetch(.clubDataList(), [Company].self) { [weak self] (result) in
             self?.listViewState.value = .finished
 
             switch result {
@@ -94,7 +94,7 @@ final class ListViewModel: ObservableViewModelProtocol {
                 ? clubData!.members.filter {$0.name.lowercased().contains(text) }
                 : clubData!.members)
 
-        self.listViewState.value = .clubDataUpdates
+        listViewState.value = .clubDataUpdates
     }
 
     func sortCludData(_ tab: ClubTabs, sortBy: String) {
@@ -109,11 +109,11 @@ final class ListViewModel: ObservableViewModelProtocol {
                 filteredClubData?.members.sort {$0.age < $1.age}
             }
         }
-        self.listViewState.value = .clubDataUpdates
+        listViewState.value = .clubDataUpdates
     }
 
     func loadSegmentWiseData() {
-        self.listViewState.value = .clubDataUpdates
+        listViewState.value = .clubDataUpdates
     }
 
     // MARK: - Private
@@ -126,8 +126,8 @@ final class ListViewModel: ObservableViewModelProtocol {
             .map { MemberCellModel(member: $0) }
 
         clubData = ClubData(companies: companies, members: members)
-        filteredClubData = self.clubData?.copy() as? ClubData
-        self.listViewState.value = .clubDataUpdates
+        filteredClubData = clubData?.copy() as? ClubData
+        listViewState.value = .clubDataUpdates
     }
 }
 

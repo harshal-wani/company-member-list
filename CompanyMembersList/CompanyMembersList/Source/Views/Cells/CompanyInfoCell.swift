@@ -28,11 +28,11 @@ final class CompanyInfoCell: UITableViewCell, ReusableView, NibLoadableView {
 
     var companyCellModel: CompanyCellModel? {
         didSet {
-            self.nameLabel.text = companyCellModel?.name
-            self.aboutlabel.text = companyCellModel?.about
-            self.websiteLabel.text = companyCellModel?.website
-            self.setActionButtonImage(.favorite)
-            self.setActionButtonImage(.follow)
+            nameLabel.text = companyCellModel?.name
+            aboutlabel.text = companyCellModel?.about
+            websiteLabel.text = companyCellModel?.website
+            setActionButtonImage(.favorite)
+            setActionButtonImage(.follow)
             if let url = companyCellModel?.logo {
                 logoImage.sd_setImage(with: URL(string: url))
             }
@@ -54,16 +54,16 @@ final class CompanyInfoCell: UITableViewCell, ReusableView, NibLoadableView {
         switch type {
         case .favorite:
             if (companyCellModel?.isFavorite) == true {
-                self.favoriteButton.setImage(UIImage(named: "ic_favorited"), for: .normal)
+                favoriteButton.setImage(UIImage(named: "ic_favorited"), for: .normal)
             } else {
-                self.favoriteButton.setImage(UIImage(named: "ic_favorite"), for: .normal)
+                favoriteButton.setImage(UIImage(named: "ic_favorite"), for: .normal)
             }
 
         case .follow:
             if (companyCellModel?.isfollow) == true {
-                self.followButton.setImage(UIImage(named: "ic_following"), for: .normal)
+                followButton.setImage(UIImage(named: "ic_following"), for: .normal)
             } else {
-                self.followButton.setImage(UIImage(named: "ic_follow"), for: .normal)
+                followButton.setImage(UIImage(named: "ic_follow"), for: .normal)
             }
         }
     }

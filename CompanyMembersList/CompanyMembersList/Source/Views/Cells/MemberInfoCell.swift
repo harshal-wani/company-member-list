@@ -22,11 +22,11 @@ final class MemberInfoCell: UITableViewCell, ReusableView, NibLoadableView {
 
     var memberCellModel: MemberCellModel? {
         didSet {
-            self.nameLabel.text = memberCellModel?.name
-            self.agelabel.text = memberCellModel?.age.description
-            self.phoneLabel.text = memberCellModel?.phone
-            self.emailLabel.text = memberCellModel?.email
-            self.setActionButtonImage(.favorite)
+            nameLabel.text = memberCellModel?.name
+            agelabel.text = memberCellModel?.age.description
+            phoneLabel.text = memberCellModel?.phone
+            emailLabel.text = memberCellModel?.email
+            setActionButtonImage(.favorite)
         }
     }
 
@@ -41,9 +41,9 @@ final class MemberInfoCell: UITableViewCell, ReusableView, NibLoadableView {
         switch type {
         case .favorite:
             if (memberCellModel?.isFavorite) == true {
-                self.favoriteButton.setImage(UIImage(named: "ic_favorited"), for: .normal)
+                favoriteButton.setImage(UIImage(named: "ic_favorited"), for: .normal)
             } else {
-                self.favoriteButton.setImage(UIImage(named: "ic_favorite"), for: .normal)
+                favoriteButton.setImage(UIImage(named: "ic_favorite"), for: .normal)
             }
         case .follow: break
         }

@@ -41,7 +41,7 @@ final class ListViewController: UIViewController, Storyboarded {
     // MARK: - View life cyle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = LocalizableStrings.listScreenTitle
+        title = LocalizableStrings.listScreenTitle
         UIHelper.setNavigationItem(viewController: self,
                                    position: .right,
                                    image: nil,
