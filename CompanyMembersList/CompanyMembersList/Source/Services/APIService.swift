@@ -71,13 +71,19 @@ final class APIService: APIServiceProtocol {
                 completion(.failure(.noData))
                 return
             }
-            /// Decode data
-            guard let decodedData = try? JSONDecoder().decode(T.self, from: data!) else {
-                completion(.failure(.decodeError))
-                return
-            }
-            completion(.success(decodedData))
+            completion(self.decodeData(data!))
         }
         task.resume()
+    }
+
+    /// Generic decode data into model
+    /// - Parameter data: Data to parse in model
+    private func decodeData<T: Decodable>(_ data: Data) -> Result<T, APIError> {
+        let decoder = JSONDecoder()
+
+        guard let model = try? decoder.decode(T.self, from: data) else {
+            return .failure(.decodeError)
+        }
+        return .success(model)
     }
 }
