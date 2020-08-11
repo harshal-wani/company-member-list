@@ -8,33 +8,7 @@
 
 import Foundation
 
-/// API Error mapping
-enum APIError: String, Error {
-    case invalidURL             = "Invalid url"
-    case invalidResponse        = "Invalid response"
-    case decodeError            = "Decode error"
-    case pageNotFound           = "Requested page not found!"
-    case noData                 = "Oops! No words found."
-    case noNetwork              = "Internet connection not available!"
-    case unknownError           = "Unknown error"
-    case serverError            = "Server not found, operation could't not be completed!"
-
-    static func checkErrorCode(_ errorCode: Int = 0) -> APIError {
-        switch errorCode {
-        case 400:
-            return .invalidURL
-        case 500:
-            return .serverError
-        case 404:
-            return .pageNotFound
-        default:
-            return .unknownError
-        }
-    }
-}
-
 protocol APIServiceProtocol {
-
     func fetch<T: Decodable>(_ endPoint: EndPoint, _ type: T.Type, completion: @escaping (Result<T, APIError>) -> Void)
 }
 
@@ -79,11 +53,16 @@ final class APIService: APIServiceProtocol {
     /// Generic decode data into model
     /// - Parameter data: Data to parse in model
     private func decodeData<T: Decodable>(_ data: Data) -> Result<T, APIError> {
-        let decoder = JSONDecoder()
 
-        guard let model = try? decoder.decode(T.self, from: data) else {
-            return .failure(.decodeError)
+        do {
+            let model = try JSONDecoder().decode(T.self, from: data)
+            return .success(model)
+        } catch let error {
+            if let err = error as? DecodingError {
+                return  .failure(APIError.parseDecodingError(err))
+            } else {
+                return .failure(.unknownError)
+            }
         }
-        return .success(model)
     }
 }

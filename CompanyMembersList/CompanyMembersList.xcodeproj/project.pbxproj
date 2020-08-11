@@ -42,6 +42,7 @@
 		C9D2DEA924C6BFC600191A9B /* MemberInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9D2DEA824C6BFC600191A9B /* MemberInfoCell.xib */; };
 		C9D2DEAB24C6F20A00191A9B /* HashableClass+WG.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DEAA24C6F20A00191A9B /* HashableClass+WG.swift */; };
 		C9D2DEAD24C6F61A00191A9B /* ClubDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DEAC24C6F61A00191A9B /* ClubDataModel.swift */; };
+		C9FAA00F24E26CBB000486B8 /* APIServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FAA00E24E26CBB000486B8 /* APIServiceError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		C9D2DEA824C6BFC600191A9B /* MemberInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemberInfoCell.xib; sourceTree = "<group>"; };
 		C9D2DEAA24C6F20A00191A9B /* HashableClass+WG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HashableClass+WG.swift"; sourceTree = "<group>"; };
 		C9D2DEAC24C6F61A00191A9B /* ClubDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubDataModel.swift; sourceTree = "<group>"; };
+		C9FAA00E24E26CBB000486B8 /* APIServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceError.swift; sourceTree = "<group>"; };
 		DA7465F3921F2D8DE4178890 /* Pods_CompanyMembersListTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CompanyMembersListTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0F8008ED79C2CC24BC6CDF2 /* Pods-CompanyMembersList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompanyMembersList.release.xcconfig"; path = "Target Support Files/Pods-CompanyMembersList/Pods-CompanyMembersList.release.xcconfig"; sourceTree = "<group>"; };
 		F54E90757FDB886733389C27 /* Pods-CompanyMembersListTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompanyMembersListTests.release.xcconfig"; path = "Target Support Files/Pods-CompanyMembersListTests/Pods-CompanyMembersListTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				C9B2C46F24C9B896004478CC /* APIService.swift */,
+				C9FAA00E24E26CBB000486B8 /* APIServiceError.swift */,
 				C9B2C47124C9B8B6004478CC /* EndPoint.swift */,
 			);
 			path = Services;
@@ -506,6 +509,7 @@
 				C9D2DE6724C4841100191A9B /* UIAlertController+WG.swift in Sources */,
 				C9D2DE7024C4841100191A9B /* Coordinator.swift in Sources */,
 				C9D2DE7824C4997400191A9B /* Company.swift in Sources */,
+				C9FAA00F24E26CBB000486B8 /* APIServiceError.swift in Sources */,
 				C9D2DE9924C5CDA800191A9B /* PickerView.swift in Sources */,
 				C9D2DEA724C6BF7A00191A9B /* MemberInfoCell.swift in Sources */,
 				C9D2DE6D24C4841100191A9B /* ApplicationCoordinator.swift in Sources */,
