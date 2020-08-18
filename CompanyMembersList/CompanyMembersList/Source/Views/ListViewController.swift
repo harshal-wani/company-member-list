@@ -24,13 +24,7 @@ final class ListViewController: UIViewController, Storyboarded {
 
     /// Outlet
     @IBOutlet weak var listTableView: UITableView!
-    @IBOutlet weak var compMemSegControl: UISegmentedControl! {
-        didSet {
-            ClubTabs.allCases.forEach {
-                compMemSegControl.setTitle($0.description, forSegmentAt: $0.rawValue)
-            }
-        }
-    }
+    @IBOutlet weak var compMemSegControl: UISegmentedControl!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     /// Local
@@ -48,6 +42,7 @@ final class ListViewController: UIViewController, Storyboarded {
                                    title: "Sort",
                                    action: #selector(rightButtonTapped))
 
+        configureSegmentView()
         configureTableView()
         configureDataSource()
         configurePickerView()
@@ -113,8 +108,8 @@ final class ListViewController: UIViewController, Storyboarded {
 
                                         self?.viewModel.sortCludData(
                                             (tab == ClubTabs.company)
-                                                ? .company
-                                                : .member, sortBy: str)
+                                                ? .company : .member,
+                                            sortBy: str)
         }
     }
 
@@ -128,7 +123,12 @@ final class ListViewController: UIViewController, Storyboarded {
 
     private func updateSortOption() {
         sortPickerView.pickerDataSource = (compMemSegControl.selectedSegmentIndex == 0)
-            ? viewModel.sortOption.company
-            : viewModel.sortOption.member
+            ? viewModel.sortOption.company : viewModel.sortOption.member
+    }
+
+    private func configureSegmentView() {
+        ClubTabs.allCases.forEach {
+            compMemSegControl.setTitle($0.description, forSegmentAt: $0.rawValue)
+        }
     }
 }
